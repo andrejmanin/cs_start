@@ -6,20 +6,31 @@ namespace cs_start
     {
         static void Main(string[] args)
         {
-            try
+            try // Task 2 
             {
-                const byte MAX_LENGTH = 6;
+                const byte MAX_LENGTH = 5;
                 string? input = ReadLine();
-                if (input == null || input.Length > MAX_LENGTH)
+                if (input is null || input.Length > MAX_LENGTH)
                 {
-                    WriteLine(input[..MAX_LENGTH]);
+                    WriteLine(new string('-', MAX_LENGTH));
                     return;
                 }
-
-                for (var i = input.Length - 1; i >= 0; i--)
+                int min = int.Parse(input[0].ToString()), max = 1, sum = 0, num;
+                for (var i = 0; i < input.Length; i++)
                 {
-                    Write(input[i]);
+                    num = int.Parse(input[i].ToString());
+                    if (num < min)
+                    {
+                        min = num;
+                    } else if (num > max)
+                    {
+                        max = num;
+                    }
+                    sum += num;
                 }
+                WriteLine($"Sum: {sum}");
+                WriteLine($"Min: {min}");
+                WriteLine($"Max: {max}");
             }
             catch (Exception e)
             {
