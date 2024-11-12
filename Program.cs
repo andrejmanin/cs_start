@@ -6,9 +6,25 @@ namespace cs_start
     {
         static void Main(string[] args)
         {
-            string text =
-                "It's easy to win forgiveness for being wrong;\nbeing right is what gets you into real trouble.\nBjarne Stroustrup";
-            WriteLine(text);
+            try
+            {
+                const byte MAX_LENGTH = 6;
+                string? input = ReadLine();
+                if (input == null || input.Length > MAX_LENGTH)
+                {
+                    WriteLine(input[..MAX_LENGTH]);
+                    return;
+                }
+
+                for (var i = input.Length - 1; i >= 0; i--)
+                {
+                    Write(input[i]);
+                }
+            }
+            catch (Exception e)
+            {
+                WriteLine(e.Message);
+            }
         }
     }
 }
