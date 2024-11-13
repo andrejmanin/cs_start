@@ -22,28 +22,15 @@ namespace cs_start
                     (start, end) = (end, start);
                 }
 
-                int fib, first = 0, second = 1;
-                if (start == 0)
+                WriteLine();
+                for (int i = Convert.ToInt32(start); i <= end; i++)
                 {
-                    Write($"{first} {second} ");
-                } else if (start == 1)
-                {
-                    Write($"{second} ");
+                    for (int j = 0; j < i; j++)
+                    {
+                        Write($"{i} ");
+                    }
+                    WriteLine();
                 }
-                do
-                {
-                    if (first + second > end)
-                    {
-                        break;
-                    }
-                    fib = first + second;
-                    first = second;
-                    second = fib;
-                    if (fib >= start)
-                    {
-                        Write($"{fib} ");   
-                    }
-                }while(true);
             }
             catch (Exception e)
             {
