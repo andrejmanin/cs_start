@@ -6,31 +6,44 @@ namespace cs_start
     {
         static void Main(string[] args)
         {
-            try // Task 2 
+            try 
             {
-                const byte MAX_LENGTH = 5;
-                string? input = ReadLine();
-                if (input is null || input.Length > MAX_LENGTH)
+                Int32? start = Convert.ToInt16(Console.ReadLine());
+                Int32? end = Convert.ToInt16(Console.ReadLine());
+
+                if (start == 0 && end == 0)
                 {
-                    WriteLine(new string('-', MAX_LENGTH));
+                    WriteLine($"{end} is a zero");
                     return;
                 }
-                int min = int.Parse(input[0].ToString()), max = 1, sum = 0, num;
-                for (var i = 0; i < input.Length; i++)
+
+                if (start > end)
                 {
-                    num = int.Parse(input[i].ToString());
-                    if (num < min)
-                    {
-                        min = num;
-                    } else if (num > max)
-                    {
-                        max = num;
-                    }
-                    sum += num;
+                    (start, end) = (end, start);
                 }
-                WriteLine($"Sum: {sum}");
-                WriteLine($"Min: {min}");
-                WriteLine($"Max: {max}");
+
+                int fib, first = 0, second = 1;
+                if (start == 0)
+                {
+                    Write($"{first} {second} ");
+                } else if (start == 1)
+                {
+                    Write($"{second} ");
+                }
+                do
+                {
+                    if (first + second > end)
+                    {
+                        break;
+                    }
+                    fib = first + second;
+                    first = second;
+                    second = fib;
+                    if (fib >= start)
+                    {
+                        Write($"{fib} ");   
+                    }
+                }while(true);
             }
             catch (Exception e)
             {
